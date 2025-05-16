@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  auth:
+    build: ./auth
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./auth:/app
+    networks:
+      - reward-net
+
+  event:
+    build: ./event
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./event:/app
+    networks:
+      - reward-net
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./gateway:/app
+    networks:
+      - reward-net
+
+networks:
+  reward-net:
+    driver: bridge
