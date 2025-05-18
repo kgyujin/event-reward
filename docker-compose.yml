@@ -1,6 +1,14 @@
 version: '3.9'
 
 services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - reward-net
+
   auth:
     build: ./auth
     ports:
@@ -9,6 +17,8 @@ services:
       - ./auth:/app
     networks:
       - reward-net
+    env_file:
+      - ./auth/.env
 
   event:
     build: ./event
@@ -18,6 +28,8 @@ services:
       - ./event:/app
     networks:
       - reward-net
+    env_file:
+      - ./event/.env
 
   gateway:
     build: ./gateway
@@ -27,6 +39,8 @@ services:
       - ./gateway:/app
     networks:
       - reward-net
+    env_file:
+      - ./gateway/.env
 
 networks:
   reward-net:
