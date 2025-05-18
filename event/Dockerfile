@@ -6,6 +6,6 @@ RUN npm install
 RUN npm install -g @nestjs/cli
 
 COPY . .
-EXPOSE 3000
+EXPOSE 3002
 
 CMD ["npm", "run", "start:dev"]

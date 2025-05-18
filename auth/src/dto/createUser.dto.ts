@@ -1,5 +1,5 @@
 import { IsEmail, IsOptional, IsString, MinLength } from 'class-validator';
-import { UserRole } from '../user/user.schema';
+import { UserRole } from '../schemas/user.schema';
 
 export class CreateUserDto {
   @IsEmail()
