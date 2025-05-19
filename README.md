@@ -20,7 +20,7 @@
 
 ## 실행 방법 (Docker Compose)
 ```bash
-git clone <repo-url>
+git clone https://github.com/kgyujin/event-reward
 cd event_reward
 docker-compose up --build
 ```
@@ -63,21 +63,21 @@ docker-compose up --build
 - 인증은 JWT 기반, 역할별 접근 권한 분리 처리
 - Postman을 활용한 테스트를 기준으로 작성 및 점검
 
-## Postman 테스트
+## Postman 테스트 시나리오
 
 ### 1. 회원가입
 - POST `/auth/signup`
-```
+```bash
 Content-Type: application/json
 ```
-```
+```json
 {
   "email": "test1@test.com",
   "password": "1q2w3e4r",
   "role": "USER"
 }
 ```
-```
+```json
 {
   "email": "admin1@test.com",
   "password": "1q2w3e4r",
@@ -87,16 +87,16 @@ Content-Type: application/json
 
 ### 2. 로그인
 - POST `/auth/login`
-```
+```bash
 Content-Type: application/json
 ```
-```
+```json
 {
   "email": "test1@test.com",
   "password": "1q2w3e4r"
 }
 ```
-```
+```json
 {
   "email": "admin1@test.com",
   "password": "1q2w3e4r"
@@ -105,28 +105,28 @@ Content-Type: application/json
 
 ### 3. 프로필 조회
 - GET `/auth/profile`
-```
+```bash
 Authorization: Bearer <access_token>
 ```
 
 ### 4. 유저 목록 조회
 - GET `/users`
-```
+```bash
 Authorization: Bearer <access_token>
 ```
 
 ### 5. 유저 상세 조회
 - GET `/users/:id`
-```
+```bash
 Authorization: Bearer <access_token>
 ```
 
 ### 6. 유저 역할 변경
 - PATCH `/users/:id`
-```
+```bash
 Authorization: Bearer <access_token>
 ```
-```
+```json
 {
   "role": "USER"
 }
@@ -134,10 +134,10 @@ Authorization: Bearer <access_token>
 
 ### 7. 이벤트 생성
 - POST `/events`
-```
+```bash
 Content-Type: application/json
 ```
-```
+```json
 {
   "name": "우주전쟁 이벤트",
   "description": "레벨 범위 몬스터 100마리 처치 시 보상 지급",
@@ -150,10 +150,10 @@ Content-Type: application/json
 
 ### 8. 보상 생성
 - POST `/rewards`
-```
+```bash
 Content-Type: application/json
 ```
-```
+```json
 {
   "name": "우주전쟁 의자",
   "point": 50000,
@@ -164,22 +164,22 @@ Content-Type: application/json
 
 ### 9. 전체 보상 조회
 - GET `/rewards`
-```
+```bash
 Content-Type: application/json
 ```
 
 ### 10. 특정 이벤트 보상 조회
 - GET `/rewards/event/:id`
-```
+```bash
 Content-Type: application/json
 ```
 
 ### 11. 보상 요청 생성
 - POST `/reward-requests`
-```
+```bash
 Content-Type: application/json
 ```
-```
+```json
 {
   "userId": "682b12c08d92742ab015821f",
   "eventId": "682b12ab22623f7571483cbf",
@@ -190,16 +190,16 @@ Content-Type: application/json
 
 ### 12. 보상 요청 조회
 - GET `/reward-requests`
-```
+```bash
 Content-Type: application/json
 ```
 
 ### 13. 보상 요청 상태 변경
 - PATCH `/reward-requests/:id/status`
-```
+```bash
 Content-Type: application/json
 ```
-```
+```json
 {
   "status": "APPROVED"
 }
