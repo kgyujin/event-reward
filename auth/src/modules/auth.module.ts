@@ -5,8 +5,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthController } from '../controllers/auth.controller';
 import { AuthService } from '../services/auth.service';
 import { UserModule } from './user.module';
+import { UserController } from '../controllers/user.controller';
+import { UserService } from '../services/user.service';
 import { User, UserSchema } from '../schemas/user.schema';
 import { LogModule } from '../log/log.module';
+import { JwtStrategy } from '../jwt/jwt.strategy';
 
 @Module({
   imports: [
@@ -22,7 +25,7 @@ import { LogModule } from '../log/log.module';
     UserModule,
     LogModule
   ],
-  controllers: [AuthController],
-  providers: [AuthService],
+  controllers: [AuthController, UserController],
+  providers: [AuthService, UserService, JwtStrategy],
 })
 export class AuthModule {}
