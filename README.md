@@ -2,20 +2,20 @@
 
 ## 프로젝트 환경 및 서버 정보
 
-| 항목      | 버전/설명  |
+| 항목 | 버전/설명 |
 |-----------|-------|
-| Node.js   | 18  |
-| NestJS      | 최신/MSA 구조(gateway, auth, event)  |
-| DB     | MongoDB  |
-| 인증     | JWT  |
-| 배포/실행     | Docker + docker-compose  |
-| 언어     | TypeScript  |
+| Node.js | 18 |
+| NestJS | 최신/MSA 구조(gateway, auth, event) |
+| DB | MongoDB |
+| 인증 | JWT |
+| 배포/실행 | Docker + docker-compose |
+| 언어 | TypeScript |
 
-| 서버      | 포트  |
+| 서버 | 포트 |
 |-----------|-------|
-| Gateway Server   | 3000  |
-| Auth Server      | 3001  |
-| Event Server     | 3002  |
+| Gateway Server | 3000 |
+| Auth Server | 3001 |
+| Event Server | 3002 |
 
 
 ## 실행 방법 (Docker Compose)
@@ -25,25 +25,25 @@ cd event_reward
 docker-compose up --build
 ```
 
-- Gateway: http://localhost:3000
-- Auth: http://localhost:3001
-- Event: http://localhost:3002
+- **Gateway**: http://localhost:3000
+- **Auth**: http://localhost:3001
+- **Event**: http://localhost:3002
 
 ## API 사용 예시
 
-### 회원가입/로그인 (Auth)
+### 회원가입/로그인
 - POST `/auth/signup`
 - POST `/auth/login`
 
-### 이벤트 생성/조회 (Event)
+### 이벤트 생성/조회
 - POST `/event/events`
 
-### 보상 등록/조회 (Event)
+### 보상 등록/조회
 - POST `/event/rewards` (운영자/관리자 권한)
 - GET `/event/rewards`
 - GET `/event/rewards/event/:id`
 
-### 보상 요청/이력 (Event)
+### 보상 요청/이력
 - POST `/event/reward-requests` (유저)
 - GET `/event/reward-requests` (유저/운영자/감사자/관리자)
 - PATCH `/event/reward-requests/:id/status` (운영자/관리자)
@@ -139,8 +139,8 @@ Content-Type: application/json
 ```
 ```json
 {
-  "name": "우주전쟁 이벤트",
-  "description": "레벨 범위 몬스터 100마리 처치 시 보상 지급",
+  "name": "헤이스트 이벤트",
+  "description": "레벨 범위 몬스터 50,000마리 처치 시 보상 지급",
   "startDate": "2025-05-01T00:00:00.000Z",
   "endDate": "2025-06-01T00:00:00.000Z",
   "monsterKillCount": 50000,
